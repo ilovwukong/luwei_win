@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <title>test</title>
+        <style>
+            div{
+                width:0px;
+                height:100px;
+                background:red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div"></div>
+        <input type="button" value="stop" id="input_stop"/>
+        <input type="button" value="start" id="input_start"/>
+        <script>
+            var n=20;
+            var animation="";
+            window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+            function step(){
+                n++;
+                div.style.width=n+"px";
+                if(n<600){
+                    animation=requestAnimationFrame(step);
+                }
+            }
+            step();
+            input_stop.onclick=function(){
+                cancelAnimationFrame(animation);
+            }
+            input_start.onclick=function(){
+                step();
+            }
+        </script>
+    </body>
+</html>
+
